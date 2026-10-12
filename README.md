@@ -1,2 +1,62 @@
 # DIVER-Final
-# DIVER: Domain-Invariant Visual Enhancement and Restoration  Underwater images degrade due to wavelength-dependent attenuation, scattering, and non-uniform illumination. 
+
+DIVER: Domain-Invariant Visual Enhancement and Restoration  Underwater images degrade due to wavelength-dependent attenuation, scattering, and non-uniform illumination. 
+DIVER is an **unsupervised, domain-invariant underwater image enhancement framework** that combines empirical enhancement with physics-guided modeling to handle diverse underwater conditions. DIVER provides **robust, physics-aware, and domain-invariant enhancement** for real-world underwater imaging and robotic perception. It is evaluated on **8 underwater datasets** (shallow, deep, turbid, low-light, and artificial illumination) and outperforms or matches state-of-the-art methods (WaterNet, UDNet, Phaseformer) across underwater domains.
+
+## Architecture
+- **IlluminateNet**: for adaptive luminance enhancement OR **Spectral Equalization Filter (SEF)**: normalizes spectral imbalance
+- **Adaptive Optical Correction Module (AOCM)**: Refines hue and contrast via channel-adaptive filtering
+- **Hydro-OpticNet (HON)**: Physics-constrained network that compensates for backscatter and wavelength-dependent attenuation
+
+All modules are trained **unsupervised** using a composite loss function.
+
+
+<div align="center">
+  <img src="DIVER_BlockDaigram.png" width="75%"/>
+</div>
+
+## Highlights
+- **Depth-aware enhancement** 
+- Effective against all underwater conditions
+
+---
+
+## Repository Structure (Quick Tour)
+- `DIVER/training+inference.ipynb` : **Training + Inference** notebook (main entrypoint)
+-  `DIVER/IlluminateNet_Checkpoints/` : pretrained weights for Seethru and Fishtrac datasets for preprocessing
+- `DIVER/Diver_Checkpoints/` : pretrained weights for all benchmark Datasets
+- `req.txt` : python dependencies
+
+---
+
+## Requirements
+- **Python 3.12** (recommended / tested)
+- Install dependencies from `req.txt`
+
+---
+
+## Setup & Installation
+
+### 1) Clone the repository
+```bash
+https://github.com/AIRLabIISc/DIVER.git
+cd DIVER
+```
+
+### 2) Create and activate a virtual environment
+```bash
+python3.12 -m venv diver
+source diver/bin/activate
+```
+
+### 3) Install requirements
+```bash
+pip install --upgrade pip
+pip install -r req.txt
+```
+
+## Usage
+
+- To execute DIVER use the provided notebook:
+training+inference.ipynb
+- Refer Processing Workflow - Training and Inference for details
